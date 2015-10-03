@@ -1,0 +1,37 @@
+class Mythtread implements Runnable
+{
+	public void run()
+	{
+		task1();
+		task2();
+		task3();
+	}	
+	public static void task1()
+	{
+		System.out.println("This is task1");
+	}
+
+	public static void task2()
+	{
+		System.out.println("This is task2");
+	}
+	public static void task3()
+	{
+		System.out.println("This is task1");
+	}
+}
+
+class Test 
+{
+	public static void main(String args[])
+	{
+		Mythtread m1 = new Mythtread();
+		Thread t1 = new Thread(m1);
+		t1.start();
+	}
+}
+
+Output - 
+This is task1
+This is task2
+This is task1
