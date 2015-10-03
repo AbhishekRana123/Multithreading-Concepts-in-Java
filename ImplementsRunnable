@@ -1,0 +1,17 @@
+class ThreadDemo implements Runnable
+{
+	public void run()
+	{
+		System.out.println("Thread created by implements Runnable interface");
+	}
+
+	public static void main(String args[])
+	{
+		ThreadDemo t1 = new ThreadDemo();
+		Thread th1 = new Thread(t1);
+		th1.start();
+	}
+}
+
+Output -
+Thread created by implements Runnable interface
