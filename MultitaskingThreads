@@ -1,0 +1,50 @@
+class MyThread implements Runnable
+{
+	String str;
+	MyThread(String str)
+	{
+		this.str = str;
+	}
+	public void run()
+	{
+		for(int i=0;i<5;i++)
+		{
+			System.out.println(str+" : "+i);
+			try
+			{
+				Thread.sleep(2000);
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+	}
+}
+class MultiTaskingThread
+{
+	public static void main(String args[])
+	{	
+		MyThread t1 = new MyThread("cut the tickets");
+		MyThread t2 = new MyThread("Book the tickets");
+		
+		Thread th1 = new Thread(t1);
+		Thread th2 = new Thread(t2);
+		
+		th1.start();
+		th2.start();
+		 
+	}
+}
+
+Output -
+cut the tickets : 0
+Book the tickets : 0
+cut the tickets : 1
+Book the tickets : 1
+cut the tickets : 2
+Book the tickets : 2
+cut the tickets : 3
+Book the tickets : 3
+cut the tickets : 4
+Book the tickets : 4
