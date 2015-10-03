@@ -1,0 +1,19 @@
+class ThreadDemo extends Thread
+{
+	ThreadDemo()
+	{
+		start();
+	}
+	public void run()
+	{
+		System.out.println("Thread created by extending Thread class");
+	}
+
+	public static void main(String args[])
+	{
+		ThreadDemo t1 = new ThreadDemo();
+	}
+}
+
+Output -
+Thread created by extending Thread class
