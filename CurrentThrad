@@ -1,0 +1,19 @@
+class ThreadMain
+{
+	public static void main(String args[])
+	{
+		System.out.println("Lets find out the current Thread");
+		Thread t = Thread.currentThread();
+		System.out.println("Current Thread ="+t);
+		System.out.println("Its name = "+t.getName());
+	}
+}
+
+
+Output - 
+Lets find out the current Thread
+Current Thread =Thread[main,5,main]
+Its name = main
+
+
+Here CurrentThread() is static method in Thread class used to get the current thread.
