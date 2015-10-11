@@ -1,0 +1,108 @@
+class Q
+{
+	int n;
+	boolean value = false;
+	synchronized int get()
+	{
+		try
+		{
+			if(!value)
+			{
+				wait();
+			}
+		}
+		catch(Exception e){}
+		value = false;
+		notify();
+		System.out.println("Got :"+n);	
+		return n;
+	}
+	synchronized void put(int n)
+	{
+		try
+		{
+			if(value)
+			{
+				wait();
+			}
+		}
+		catch(Exception e){}
+		value = true;
+		this.n = n;
+		
+		System.out.println("Put :"+n);
+		notify();
+	}
+}
+
+class Producer implements Runnable
+{
+	Q q1;
+	Producer(Q q)
+	{
+		this.q1=q;
+		new Thread(this).start();
+	}
+	public void run()
+	{
+		int i=1;
+		while(true)
+		{
+			q1.put(i++);
+		}
+	}
+}
+
+class Consumer implements Runnable
+{
+	Q q1;
+	Consumer(Q q)
+	{
+		this.q1=q;
+		new Thread(this).start();
+	}
+	public void run()
+	{
+		while(true)
+		{
+			q1.get();
+		}
+	}
+}
+
+class ProducerConsumerWithSync 
+{
+	public static void main(String args[])
+	{
+		Q q = new Q();
+		new Producer(q);
+		new Consumer(q);
+	}
+}
+
+Output -
+.
+.
+.
+.
+Put :433
+Got :433
+Put :434
+Got :434
+Put :435
+Got :435
+Put :436
+Got :436
+Put :437
+Got :437
+Put :438
+Got :438
+Put :439
+Got :439
+Put :440
+Got :440
+Put :441
+Got :441
+.
+.
+.
