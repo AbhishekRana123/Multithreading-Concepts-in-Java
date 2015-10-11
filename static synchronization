@@ -1,0 +1,163 @@
+class Table
+{
+	synchronized static void printTable(int n)
+	{
+		for(int i=1;i<=5;i++)
+		{
+			System.out.println(n*i);
+			try
+			{
+				Thread.sleep(400);
+			}
+			catch(Exception e)
+			{
+				System.out.println(e);
+			}
+		}		
+	}
+}
+
+class Mythread1 extends Thread
+{
+	public void run()
+	{
+		new Table().printTable(5);
+	}
+}
+
+
+class Mythread2 extends Thread
+{
+	public void run()
+	{
+		new Table().printTable(100);
+	}
+}
+
+class Mythread3 extends Thread
+{
+	
+	public void run()
+	{
+		new Table().printTable(1000);
+	}
+}
+
+class Mythread4 extends Thread
+{
+	
+	public void run()
+	{
+		new Table().printTable(10000);
+	}
+}
+
+
+class Use 
+{
+	public static void main(String args[])
+	{
+		Table obj = new Table();
+		Mythread1 th1 = new Mythread1();
+		Mythread2 th2 = new Mythread2();
+		Mythread3 th3 = new Mythread3();
+		Mythread4 th4 = new Mythread4();
+		th1.start();
+		th2.start();
+		th3.start();
+		th4.start();
+	}
+}
+class Table
+{
+	synchronized static void printTable(int n)
+	{
+		for(int i=1;i<=5;i++)
+		{
+			System.out.println(n*i);
+			try
+			{
+				Thread.sleep(400);
+			}
+			catch(Exception e)
+			{
+				System.out.println(e);
+			}
+		}		
+	}
+}
+
+class Mythread1 extends Thread
+{
+	public void run()
+	{
+		new Table().printTable(5);
+	}
+}
+
+
+class Mythread2 extends Thread
+{
+	public void run()
+	{
+		new Table().printTable(100);
+	}
+}
+
+class Mythread3 extends Thread
+{
+	
+	public void run()
+	{
+		new Table().printTable(1000);
+	}
+}
+
+class Mythread4 extends Thread
+{
+	
+	public void run()
+	{
+		new Table().printTable(10000);
+	}
+}
+
+
+class Use 
+{
+	public static void main(String args[])
+	{
+		Table obj = new Table();
+		Mythread1 th1 = new Mythread1();
+		Mythread2 th2 = new Mythread2();
+		Mythread3 th3 = new Mythread3();
+		Mythread4 th4 = new Mythread4();
+		th1.start();
+		th2.start();
+		th3.start();
+		th4.start();
+	}
+}
+
+
+Output -
+5
+10
+15
+20
+25
+100
+200
+300
+400
+500
+10000
+20000
+30000
+40000
+50000
+1000
+2000
+3000
+4000
+5000
