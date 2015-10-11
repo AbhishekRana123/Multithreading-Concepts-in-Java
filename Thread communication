@@ -1,0 +1,91 @@
+class Q
+{
+	int n;
+	synchronized int get()
+	{
+		System.out.println("Got :"+n);
+		return n;
+	}
+	synchronized void put(int n)
+	{
+		this.n = n;
+		System.out.println("Put :"+n);
+	}
+}
+
+class Producer implements Runnable
+{
+	Q q1;
+	Producer(Q q)
+	{
+		this.q1=q;	
+		new Thread(this).start();
+	}
+	public void run()
+	{
+		int i = 1;
+		while(true)
+		{
+			q1.put(i++);
+		}
+	}
+}
+
+class Consumer implements Runnable
+{
+	Q q1;
+	Consumer(Q q)
+	{
+		this.q1=q;
+		new Thread(this).start();	
+	}
+	public void run()
+	{
+		while(true)
+		{
+			q1.get();
+		}
+	}
+}
+
+class ProducerConsumerWithoutSync 
+{
+	public static void main(String args[])
+	{
+		Q q = new Q();
+		new Producer(q);
+		new Consumer(q);
+	}
+}
+
+Output-
+.
+.
+.
+.
+Put :623
+Put :624
+Put :625
+Put :626
+Put :627
+Put :628
+Put :629
+Put :630
+Put :631
+Put :632
+Put :633
+Put :634
+Put :635
+Put :636
+Put :637
+Put :638
+Put :639
+Put :640
+Put :641
+Put :642
+Put :643
+Put :644
+Put :645
+.
+.
+.
